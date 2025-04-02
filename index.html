@@ -41,6 +41,12 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href=".">简介</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">本电子书制作和写作方式</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">访问:</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">代码</span></p>
@@ -76,7 +82,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>../README.MD</p>
+                <h1 id="47bwy">47bwy 的学习之路</h1>
+<h3 id="_1">本电子书制作和写作方式</h3>
+<p>使用 mkdocs 和 markdown 构建，vim 编写，使用  Python-Markdown-Math 完成数学公式。
+markdown 语法参考：http://xianbai.me/learn-md/article/about/readme.html</p>
+<p>安装依赖：</p>
+<pre><code class="language-sh">requirements.txt
+
+使用 pipenv 安装
+</code></pre>
+<p>编写并查看：</p>
+<pre><code class="language-sh">mkdocs serve     # 修改自动刷新浏览器，浏览器打开 http://localhost:8000 访问
+# 数学公式参考 https://www.zybuluo.com/codeep/note/163962
+# 图片最好压缩再放到仓库(不过不建议放非文本文件)
+mkdocs gh-deploy    # 部署到自己的 github pages, 如果是 readthedocs 会自动触发构建
+</code></pre>
+<h3 id="_2">访问:</h3>
+<p><a href="https://47bwy.readthedocs.io/en/latest/">https://47bwy.readthedocs.io/en/latest/</a></p>
+<p><a href="https://47bwy.github.io/selfSync/">https://47bwy.github.io/selfSync/</a></p>
               
             </div>
           </div><footer>
@@ -126,5 +149,5 @@
 
 <!--
 MkDocs version : 1.5.3
-Build Date UTC : 2025-04-02 02:32:41.121328+00:00
+Build Date UTC : 2025-04-02 03:04:46.880730+00:00
 -->
