@@ -1,0 +1,21 @@
+/* 调整宽度并靠左 */
+.wy-nav-content {
+    max-width: 1200px !important;
+    margin-left: 0 !important;  /* 取消自动居中，强制靠左 */
+    padding: 20px;              /* 保留内边距（可选） */
+}
+
+/* 调整代码块宽度（可选） */
+.rst-content .highlight pre {
+    max-width: 100%;
+    white-space: pre-wrap;
+}
+
+/* 这段代码会在小屏幕上强制内容宽度为100% */
+/* 以避免溢出 */
+@media (max-width: 768px) {
+    .wy-nav-content {
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+}
