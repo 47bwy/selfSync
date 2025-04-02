@@ -1,16 +1,31 @@
 site_name: 47byw 的学习之路
 theme: readthedocs
 extra_javascript:
-    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 markdown_extensions:
   - mdx_truly_sane_lists
   - mdx_math:
       enable_dollar_delimiter: True  #for use of inline $..$
 
+extra_css:
+  - extra.css
+
+
 nav:
     - 简介: 'index.md'
-    - 代码:
-      - 《敏捷技能修炼》: 'code/敏捷技能修炼.md'
+    - Network:
+      - 网络基础: '01_network/网络基础.md'
+    - Linux:
+      - Linux 使用和维护: '02_linux/linux使用和维护.md'
+    - Python:
+      - Python 编程: '03_python/python编程.md'
+      - 数据结构和算法: '03_python/数据结构和算法.md'
     - 数据库:
-      - 《mysql必知必会》: 'database/mysql必知必会.md'
+      - mysql: '05_database/mysql必知必会.md'
+      - redis: '05_database/redis必知必会.md'
+      - mongodb: '05_database/mongodb必知必会.md'
+    - blog:
+      - 工作笔记: '08_blog/工作笔记.md'
+    - Books:
+      - 《编写可读代码的艺术》: '09_books/编写可读代码的艺术.md'
