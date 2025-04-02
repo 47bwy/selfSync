@@ -8,8 +8,8 @@ markdown_extensions:
   - mdx_math:
       enable_dollar_delimiter: True  #for use of inline $..$
 
-extra_css:
-  - extra.css
+# extra_css:
+#   - extra.css
 
 
 nav:
