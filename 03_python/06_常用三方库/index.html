@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>redis - 47bwy 的学习之路</title>
+    <title>常用三方库 - 47bwy 的学习之路</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "redis";
-        var mkdocs_page_input_path = "05_database/redis\u5fc5\u77e5\u5fc5\u4f1a.md";
+        var mkdocs_page_name = "\u5e38\u7528\u4e09\u65b9\u5e93";
+        var mkdocs_page_input_path = "03_python/06_\u5e38\u7528\u4e09\u65b9\u5e93.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -55,29 +55,35 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Python</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/00_python%E7%BC%96%E7%A8%8B/">Python 编程</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../00_python%E7%BC%96%E7%A8%8B/">Python 编程</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/01_python%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/">Python 数据操作</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_python%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/">Python 数据操作</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/02_python%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F/">Python 编程模式</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_python%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F/">Python 编程模式</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/03_python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Python 数据结构</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Python 数据结构</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/04_python%E7%AE%97%E6%B3%95/">python 算法</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_python%E7%AE%97%E6%B3%95/">python 算法</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/05_%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%BA%93/">常用内置库</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%BA%93/">常用内置库</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/06_%E5%B8%B8%E7%94%A8%E4%B8%89%E6%96%B9%E5%BA%93/">常用三方库</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">常用三方库</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#psutil">psutil 模块</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#regex">regex 库</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">数据库</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mysql</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mysql</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">redis</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/redis%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">redis</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mongodb</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mongodb</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Web</span></p>
@@ -113,8 +119,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">数据库</li>
-      <li class="breadcrumb-item active">redis</li>
+          <li class="breadcrumb-item">Python</li>
+      <li class="breadcrumb-item active">常用三方库</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -123,13 +129,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="_1"></h1>
+<h3 id="psutil">psutil 模块</h3>
+<h3 id="regex">regex 库</h3>
+<p>在Python中，处理Unicode和正则表达式混合使用时，可以使用 <code>regex</code> 库来增强功能并简化操作。</p>
+<p>这是标准库 <code>re</code> 的增强版，提供更全面的 Unicode 支持，包括：</p>
+<ul>
+<li>更强大的Unicode属性匹配（如 <code>\p{Script=Han}</code> 匹配所有汉字）。</li>
+<li>更好的大小写不敏感匹配（支持Unicode大小写转换）。</li>
+<li>模糊匹配（近似字符串匹配）等高级功能75。</li>
+</ul>
+<pre><code class="language-python">import regex
+pattern = regex.compile(r'\p{Script=Han}+')  # 匹配所有中文字符
+print(pattern.findall(&quot;你好，世界！&quot;))  # 输出: ['你好', '世界']
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="btn btn-neutral float-left" title="mysql"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="btn btn-neutral float-right" title="mongodb">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../05_%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%BA%93/" class="btn btn-neutral float-left" title="常用内置库"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../05_database/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="btn btn-neutral float-right" title="mysql">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -152,10 +171,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../05_%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%BA%93/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../05_database/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

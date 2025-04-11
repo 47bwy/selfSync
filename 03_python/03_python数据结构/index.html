@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>redis - 47bwy 的学习之路</title>
+    <title>Python 数据结构 - 47bwy 的学习之路</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "redis";
-        var mkdocs_page_input_path = "05_database/redis\u5fc5\u77e5\u5fc5\u4f1a.md";
+        var mkdocs_page_name = "Python \u6570\u636e\u7ed3\u6784";
+        var mkdocs_page_input_path = "03_python/03_python\u6570\u636e\u7ed3\u6784.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -55,29 +55,33 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Python</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/00_python%E7%BC%96%E7%A8%8B/">Python 编程</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../00_python%E7%BC%96%E7%A8%8B/">Python 编程</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/01_python%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/">Python 数据操作</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_python%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/">Python 数据操作</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/02_python%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F/">Python 编程模式</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_python%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F/">Python 编程模式</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/03_python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Python 数据结构</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Python 数据结构</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">优先级队列</a>
+    </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/04_python%E7%AE%97%E6%B3%95/">python 算法</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_python%E7%AE%97%E6%B3%95/">python 算法</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/05_%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%BA%93/">常用内置库</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%BA%93/">常用内置库</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../03_python/06_%E5%B8%B8%E7%94%A8%E4%B8%89%E6%96%B9%E5%BA%93/">常用三方库</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_%E5%B8%B8%E7%94%A8%E4%B8%89%E6%96%B9%E5%BA%93/">常用三方库</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">数据库</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mysql</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mysql</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">redis</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/redis%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">redis</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mongodb</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mongodb</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Web</span></p>
@@ -113,8 +117,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">数据库</li>
-      <li class="breadcrumb-item active">redis</li>
+          <li class="breadcrumb-item">Python</li>
+      <li class="breadcrumb-item active">Python 数据结构</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -123,13 +127,55 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="_1"></h1>
+<h3 id="_2">优先级队列</h3>
+<p>实现一个按优先级排序的队列，并且在这个队列上面每次<code>pop</code>操作总是返回优先级最高的那个元素</p>
+<p>利用<code>heapq</code>模块实现了一个简单的优先级队列</p>
+<pre><code class="language-python">import heapq
+
+class PriorityQueue:
+    def __init__(self):
+        self._queue = []
+        self._index = 0
+
+    def push(self, item, priority):
+        heapq.heappush(self._queue, (-priority, self._index, item))
+        self._index += 1
+
+    def pop(self):
+        return heapq.heappop(self._queue)[-1]
+</code></pre>
+<p>使用方式：</p>
+<pre><code class="language-python">&gt;&gt;&gt; class Item:
+...     def __init__(self, name):
+...         self.name = name
+...     def __repr__(self):
+...         return 'Item({!r})'.format(self.name)
+...
+&gt;&gt;&gt; q = PriorityQueue()
+&gt;&gt;&gt; q.push(Item('foo'), 1)
+&gt;&gt;&gt; q.push(Item('bar'), 5)
+&gt;&gt;&gt; q.push(Item('spam'), 4)
+&gt;&gt;&gt; q.push(Item('grok'), 1)
+&gt;&gt;&gt; q.pop()
+Item('bar')
+&gt;&gt;&gt; q.pop()
+Item('spam')
+&gt;&gt;&gt; q.pop()
+Item('foo')
+&gt;&gt;&gt; q.pop()
+Item('grok')
+&gt;&gt;&gt;
+</code></pre>
+<p><code>heappop()</code>函数总是返回”最小的”的元素，这就是保证队列pop操作返回正确元素的关键。 另外，由于 push 和 pop 操作时间复杂度为 O(log N)，其中 N 是堆的大小，因此就算是 N 很大的时候它们运行速度也依旧很快。</p>
+<p>在上面代码中，队列包含了一个 <code>(-priority, index, item)</code> 的元组。 优先级为负数的目的是使得元素按照优先级从高到低排序。 这个跟普通的按优先级从低到高排序的堆排序恰巧相反。</p>
+<p><code>index</code> 变量的作用是保证同等优先级元素的正确排序。 通过保存一个不断增加的 <code>index</code> 下标变量，可以确保元素按照它们插入的顺序排序。 而且， <code>index</code> 变量也在相同优先级元素比较的时候起到重要作用。</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="btn btn-neutral float-left" title="mysql"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="btn btn-neutral float-right" title="mongodb">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../02_python%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F/" class="btn btn-neutral float-left" title="Python 编程模式"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../04_python%E7%AE%97%E6%B3%95/" class="btn btn-neutral float-right" title="python 算法">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -152,10 +198,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../02_python%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../04_python%E7%AE%97%E6%B3%95/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

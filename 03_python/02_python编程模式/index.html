@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Python 编程模式 - 47bwy 的学习之路</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Python \u7f16\u7a0b\u6a21\u5f0f";
+        var mkdocs_page_input_path = "03_python/02_python\u7f16\u7a0b\u6a21\u5f0f.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> 47bwy 的学习之路
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">简介</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../01_network/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Linux</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_linux/linux%E4%BD%BF%E7%94%A8%E5%92%8C%E7%BB%B4%E6%8A%A4/">Linux 使用和维护</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Python</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../00_python%E7%BC%96%E7%A8%8B/">Python 编程</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_python%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/">Python 数据操作</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Python 编程模式</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">迭代器和生成器</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">概念和关系</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#iterable">可迭代对象（Iterable）</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#iterator">迭代器（Iterator）</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#generator">生成器（Generator）</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_4">图解</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">使用生成器创建新的迭代模式</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">在对象上实现迭代</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">反向迭代</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">带有外部状态的生成器函数</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">迭代器切片</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">跳过可迭代对象的开始部分</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_11">排列组合的迭代</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enumerate">enumerate()迭代器</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#zip">zip()迭代器</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_12">不同集合上元素的迭代</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_13">创建数据处理管道</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_14">展开嵌套的序列</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#while">迭代器代替while无限循环</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_15">单例模式</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_16">工厂模式</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Python 数据结构</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_python%E7%AE%97%E6%B3%95/">python 算法</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%BA%93/">常用内置库</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_%E5%B8%B8%E7%94%A8%E4%B8%89%E6%96%B9%E5%BA%93/">常用三方库</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">数据库</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mysql</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/redis%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">redis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_database/mongodb%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">mongodb</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Web</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../07_web/01_web%E5%BC%80%E5%8F%91/">web开发</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../07_web/02_flask/">flask</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">blog</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../08_blog/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/">工作笔记</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Books</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../09_books/%E6%8E%A7%E7%B3%96%E9%9D%A9%E5%91%BD/">《控糖革命》</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../09_books/%E7%BC%96%E5%86%99%E5%8F%AF%E8%AF%BB%E4%BB%A3%E7%A0%81%E7%9A%84%E8%89%BA%E6%9C%AF/">《编写可读代码的艺术》</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">47bwy 的学习之路</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Python</li>
+      <li class="breadcrumb-item active">Python 编程模式</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1"></h1>
+<h3 id="_2">迭代器和生成器</h3>
+<p><strong>可迭代对象、迭代器、生成器</strong></p>
+<h4 id="_3">概念和关系</h4>
+<h5 id="iterable">可迭代对象（Iterable）</h5>
+<p><strong>定义</strong>：实现了 <code>__iter__()</code> 方法的对象，或者可以被 <code>iter()</code> 函数作用的对象。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>可以用 <code>for x in obj:</code> 来遍历。</li>
+<li>调用 <code>iter(obj)</code> 会返回一个 <strong>迭代器（iterator）</strong>。</li>
+</ul>
+<p><strong>常见的可迭代对象</strong>：</p>
+<pre><code class="language-python">list, tuple, str, dict, set, range, file, 等等
+</code></pre>
+<p><strong>示例</strong>：</p>
+<pre><code class="language-python">lst = [1, 2, 3]
+it = iter(lst)  # 得到一个迭代器
+</code></pre>
+<h5 id="iterator">迭代器（Iterator）</h5>
+<p><strong>定义</strong>：实现了 <code>__iter__()</code> 和 <code>__next__()</code> 方法的对象。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><code>__iter__()</code> 返回自身（<code>return self</code>）。</li>
+<li><code>__next__()</code> 每次返回一个元素，直到抛出 <code>StopIteration</code> 异常。</li>
+<li>只能往前走，不能回头（一次性消费）。</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<pre><code class="language-python">lst = [1, 2, 3]
+it = iter(lst)  # it 是一个迭代器
+print(next(it))  # 输出 1
+print(next(it))  # 输出 2
+</code></pre>
+<h5 id="generator">生成器（Generator）</h5>
+<p>生成器是<strong>一种特殊的迭代器</strong>，有两种创建方式：</p>
+<ol>
+<li>生成器函数（使用 <code>yield</code>）</li>
+</ol>
+<pre><code class="language-python">def my_gen():
+    yield 1
+    yield 2
+    yield 3
+
+g = my_gen()  # g 是一个生成器，也就是迭代器
+</code></pre>
+<ol>
+<li>生成器表达式（generator expression）</li>
+</ol>
+<pre><code class="language-python">g = (x * x for x in range(3))  # g 是一个生成器
+</code></pre>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>省内存，懒加载。</li>
+<li>遇到 <code>yield</code> 暂停执行，下一次 <code>next()</code> 从暂停点继续。</li>
+</ul>
+<h5 id="_4">图解</h5>
+<pre><code class="language-lua">           +-----------------------+
+           |    Iterable           |   ← 可以用 for 循环遍历它
+           |  (__iter__ method)    |
+           +-----------------------+
+                     |
+                     |  iter()
+                     ↓
+           +-----------------------+
+           |    Iterator           |   ← 可以手动调用 next()
+           | (__iter__, __next__)  |
+           +-----------------------+
+                     ^
+                     |
+      +---------------------------+
+      |     Generator             |   ← 特殊的 Iterator（自动实现了）
+      |   (使用 yield 创建的)       |
+      +---------------------------+
+</code></pre>
+<h4 id="_5">使用生成器创建新的迭代模式</h4>
+<pre><code class="language-python">def frange(start, stop, increment):
+    x = start
+    while x &lt; stop:
+        yield x
+        x += increment
+</code></pre>
+<p>为了使用这个函数， 可以用for循环迭代它或者使用其他接受一个可迭代对象的函数(比如 sum() , list() 等)。示例如下：</p>
+<pre><code class="language-python">&gt;&gt;&gt; for n in frange(0, 4, 0.5):
+...     print(n)
+...
+0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+&gt;&gt;&gt; list(frange(0, 1, 0.125))
+[0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875]
+&gt;&gt;&gt;
+</code></pre>
+<p>一个函数中需要有一个 <code>yield</code> 语句即可将其转换为一个生成器。 跟普通函数不同的是，生成器只能用于迭代操作。</p>
+<h4 id="_6">在对象上实现迭代</h4>
+<p>在一个对象上实现迭代最简单的方式是使用一个生成器函数。 </p>
+<pre><code class="language-python">class Node:
+    def __init__(self, value):
+        self._value = value
+        self._children = []
+
+    def __repr__(self):
+        return 'Node({!r})'.format(self._value)
+
+    def add_child(self, node):
+        self._children.append(node)
+
+    def __iter__(self):
+        return iter(self._children)
+
+    def depth_first(self):
+        yield self
+        for c in self:
+            yield from c.depth_first()
+
+# Example
+if __name__ == '__main__':
+    root = Node(0)
+    child1 = Node(1)
+    child2 = Node(2)
+    root.add_child(child1)
+    root.add_child(child2)
+    child1.add_child(Node(3))
+    child1.add_child(Node(4))
+    child2.add_child(Node(5))
+
+    for ch in root.depth_first():
+        print(ch)
+    # Outputs Node(0), Node(1), Node(3), Node(4), Node(2), Node(5)
+</code></pre>
+<p>在上面代码中， <code>__iter__()</code> 方法只是简单的将迭代请求传递给内部的 <code>_children</code> 属性。</p>
+<p>Python的迭代器协议需要 <code>__iter__()</code> 方法返回一个实现了 <code>__next__()</code> 方法的迭代器对象。</p>
+<p>这里的 <code>iter()</code> 函数的使用简化了代码， <code>iter(s)</code> 只是简单的通过调用 <code>s.__iter__()</code> 方法来返回对应的迭代器对象， 就跟 <code>len(s)</code> 会调用 <code>s.__len__()</code> 原理是一样的。</p>
+<p><code>depth_first()</code> 方法简单直观。 它首先返回自己本身并迭代每一个子节点并 通过调用子节点的 <code>depth_first()</code> 方法(使用 <code>yield from</code> 语句)返回对应元素。</p>
+<h4 id="_7">反向迭代</h4>
+<p>通过在自定义类上实现 <code>__reversed__()</code> 方法来实现反向迭代。比如：</p>
+<pre><code class="language-python">class Countdown:
+    def __init__(self, start):
+        self.start = start
+
+    # Forward iterator
+    def __iter__(self):
+        n = self.start
+        while n &gt; 0:
+            yield n
+            n -= 1
+
+    # Reverse iterator
+    def __reversed__(self):
+        n = 1
+        while n &lt;= self.start:
+            yield n
+            n += 1
+
+for rr in reversed(Countdown(30)):
+    print(rr)
+for rr in Countdown(30):
+    print(rr)
+</code></pre>
+<h4 id="_8">带有外部状态的生成器函数</h4>
+<p>如果要生成器暴露外部状态给用户， 可以简单的将它实现为一个类，然后把生成器函数放到 <code>__iter__()</code> 方法中过去。比如：</p>
+<pre><code class="language-python">from collections import deque
+
+class linehistory:
+    def __init__(self, lines, histlen=3):
+        self.lines = lines
+        self.history = deque(maxlen=histlen)
+
+    def __iter__(self):
+        for lineno, line in enumerate(self.lines, 1):
+            self.history.append((lineno, line))
+            yield line
+
+    def clear(self):
+        self.history.clear()
+
+
+with open('somefile.txt') as f:
+    lines = linehistory(f)
+    for line in lines:
+        if 'python' in line:
+            for lineno, hline in lines.history:
+                print('{}:{}'.format(lineno, hline), end='')
+</code></pre>
+<p>在 <code>__iter__()</code> 方法中定义生成器不会改变任何的算法逻辑。 由于它是类的一部分，所以允许定义各种属性和方法来供用户使用。</p>
+<h4 id="_9">迭代器切片</h4>
+<p>函数 <code>itertools.islice()</code> 正好适用于在迭代器和生成器上做切片操作。比如：</p>
+<pre><code class="language-python">&gt;&gt;&gt; def count(n):
+...     while True:
+...         yield n
+...         n += 1
+...
+&gt;&gt;&gt; c = count(0)
+&gt;&gt;&gt; c[10:20]
+Traceback (most recent call last):
+    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: 'generator' object is not subscriptable
+
+&gt;&gt;&gt; # Now using islice()
+&gt;&gt;&gt; import itertools
+&gt;&gt;&gt; for x in itertools.islice(c, 10, 20):
+...     print(x)
+...
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+&gt;&gt;&gt;
+</code></pre>
+<p>要着重强调的一点是 <code>islice()</code> 会消耗掉传入的迭代器中的数据，必须考虑到迭代器是不可逆的这个事实，所以如果需要之后再次访问这个迭代器的话，那么就得先将它里面的数据放入一个列表中。</p>
+<h4 id="_10">跳过可迭代对象的开始部分</h4>
+<p><code>itertools.dropwhile()</code> 函数使用时，传递一个函数对象和一个可迭代对象。 它会返回一个迭代器对象，丢弃原有序列中直到函数返回Flase之前的所有元素，然后返回后面所有元素。</p>
+<pre><code class="language-python">&gt;&gt;&gt; with open('/etc/passwd') as f:
+... for line in f:
+...     print(line, end='')
+...
+##
+# User Database
+#
+# Note that this file is consulted directly only when the system is running
+# in single-user mode. At other times, this information is provided by
+# Open Directory.
+...
+##
+nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false
+root:*:0:0:System Administrator:/var/root:/bin/sh
+...
+&gt;&gt;&gt;
+
+
+&gt;&gt;&gt; from itertools import dropwhile
+&gt;&gt;&gt; with open('/etc/passwd') as f:
+...     for line in dropwhile(lambda line: not line.startswith('#'), f):
+...         print(line, end='')
+...
+nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false
+root:*:0:0:System Administrator:/var/root:/bin/sh
+...
+&gt;&gt;&gt;
+</code></pre>
+<p>如果已经明确知道了要跳过的元素的序号的话，那么可以使用 <code>itertools.islice()</code> 来代替。比如：</p>
+<pre><code class="language-python">&gt;&gt;&gt; from itertools import islice
+&gt;&gt;&gt; items = ['a', 'b', 'c', 1, 4, 10, 15]
+&gt;&gt;&gt; for x in islice(items, 3, None):
+...     print(x)
+...
+4
+10
+15
+&gt;&gt;&gt;
+</code></pre>
+<h4 id="_11">排列组合的迭代</h4>
+<p><code>itertools</code>模块提供了三个函数来解决这类问题。 其中一个是 <code>itertools.permutations()</code> ， 它接受一个集合并产生一个元组序列，每个元组由集合中所有元素的一个可能排列组成。 也就是说通过打乱集合中元素排列顺序生成一个元组，比如：</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['a', 'b', 'c']
+&gt;&gt;&gt; from itertools import permutations
+&gt;&gt;&gt; for p in permutations(items):
+...     print(p)
+...
+('a', 'b', 'c')
+('a', 'c', 'b')
+('b', 'a', 'c')
+('b', 'c', 'a')
+('c', 'a', 'b')
+('c', 'b', 'a')
+&gt;&gt;&gt;
+</code></pre>
+<p>如果想得到指定长度的所有排列，你可以传递一个可选的长度参数。就像这样：</p>
+<pre><code class="language-python">&gt;&gt;&gt; for p in permutations(items, 2):
+...     print(p)
+...
+('a', 'b')
+('a', 'c')
+('b', 'a')
+('b', 'c')
+('c', 'a')
+('c', 'b')
+&gt;&gt;&gt;
+</code></pre>
+<p>使用 <code>itertools.combinations()</code> 可得到输入集合中元素的所有的组合。比如：</p>
+<pre><code class="language-python">&gt;&gt;&gt; from itertools import combinations
+&gt;&gt;&gt; for c in combinations(items, 3):
+...     print(c)
+...
+('a', 'b', 'c')
+
+&gt;&gt;&gt; for c in combinations(items, 2):
+...     print(c)
+...
+('a', 'b')
+('a', 'c')
+('b', 'c')
+
+&gt;&gt;&gt; for c in combinations(items, 1):
+...     print(c)
+...
+('a',)
+('b',)
+('c',)
+&gt;&gt;&gt;
+</code></pre>
+<p>对于<code>combinations()</code> 来讲，元素的顺序已经不重要了。 也就是说，组合 ('a', 'b') 跟 ('b', 'a') 其实是一样的(最终只会输出其中一个)。</p>
+<p>在计算组合的时候，一旦元素被选取就会从候选中剔除掉(比如如果元素’a’已经被选取了，那么接下来就不会再考虑它了)。 而函数 <code>itertools.combinations_with_replacement()</code> 允许同一个元素被选择多次，比如：</p>
+<pre><code class="language-python">&gt;&gt;&gt; for c in combinations_with_replacement(items, 3):
+...     print(c)
+...
+('a', 'a', 'a')
+('a', 'a', 'b')
+('a', 'a', 'c')
+('a', 'b', 'b')
+('a', 'b', 'c')
+('a', 'c', 'c')
+('b', 'b', 'b')
+('b', 'b', 'c')
+('b', 'c', 'c')
+('c', 'c', 'c')
+&gt;&gt;&gt;
+</code></pre>
+<h4 id="enumerate">enumerate()迭代器</h4>
+<p><code>enumerate()</code> 函数返回的是一个 enumerate 对象实例， 它是一个迭代器，返回连续的包含一个计数和一个值的元组， 元组中的值通过在传入序列上调用 <code>next()</code> 返回。</p>
+<p>将一个文件中出现的单词映射到它出现的行号上去，可以很容易的利用<code>enumerate()</code> 来完成：</p>
+<pre><code class="language-python">word_summary = defaultdict(list)
+
+with open('myfile.txt', 'r') as f:
+    lines = f.readlines()
+
+for idx, line in enumerate(lines):
+    # Create a list of words in current line
+    words = [w.strip().lower() for w in line.split()]
+    for word in words:
+        word_summary[word].append(idx)
+</code></pre>
+<p>处理完文件后打印 <code>word_summary</code> ，对于每个单词有一个 <code>key</code> ，每个 <code>key</code> 对应的值是一个由这个单词出现的行号组成的列表。 如果某个单词在一行中出现过两次，那么这个行号也会出现两次， 同时也可以作为文本的一个简单统计。</p>
+<h4 id="zip">zip()迭代器</h4>
+<p><code>zip(a, b)</code> 会生成一个可返回元组 <code>(x, y)</code> 的迭代器，其中x来自a，y来自b。 一旦其中某个序列到底结尾，迭代宣告结束。 因此迭代长度跟参数中最短序列长度一致。</p>
+<pre><code class="language-python">&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; b = ['w', 'x', 'y', 'z']
+&gt;&gt;&gt; for i in zip(a,b):
+...     print(i)
+...
+(1, 'w')
+(2, 'x')
+(3, 'y')
+&gt;&gt;&gt;
+</code></pre>
+<p>若要对齐长度，则可使用 <code>itertools.zip_longest()</code> 函数来代替。比如：</p>
+<pre><code class="language-python">&gt;&gt;&gt; from itertools import zip_longest
+&gt;&gt;&gt; for i in zip_longest(a,b):
+...     print(i)
+...
+(1, 'w')
+(2, 'x')
+(3, 'y')
+(None, 'z')
+
+&gt;&gt;&gt; for i in zip_longest(a, b, fillvalue=0):
+...     print(i)
+...
+(1, 'w')
+(2, 'x')
+(3, 'y')
+(0, 'z')
+&gt;&gt;&gt;
+</code></pre>
+<h4 id="_12">不同集合上元素的迭代</h4>
+<p><code>itertools.chain()</code>方法可以用来简化这个任务。 它接受一个可迭代对象列表作为输入，并返回一个迭代器，有效的屏蔽掉在多个容器中迭代细节。</p>
+<pre><code class="language-python">&gt;&gt;&gt; from itertools import chain
+&gt;&gt;&gt; a = [1, 2, 3, 4]
+&gt;&gt;&gt; b = ['x', 'y', 'z']
+&gt;&gt;&gt; for x in chain(a, b):
+... print(x)
+...
+1
+2
+3
+4
+x
+y
+z
+&gt;&gt;&gt;
+</code></pre>
+<p><code>itertools.chain()</code> 接受一个或多个可迭代对象作为输入参数。 然后创建一个迭代器，依次连续的返回每个可迭代对象中的元素。 这种方式要比先将序列合并再迭代要高效的多。</p>
+<h4 id="_13">创建数据处理管道</h4>
+<pre><code>foo/
+    access-log-012007.gz
+    access-log-022007.gz
+    access-log-032007.gz
+    ...
+    access-log-012008
+bar/
+    access-log-092007.bz2
+    ...
+    access-log-022008
+
+124.115.6.12 - - [10/Jul/2012:00:18:50 -0500] &quot;GET /robots.txt ...&quot; 200 71
+210.212.209.67 - - [10/Jul/2012:00:18:51 -0500] &quot;GET /ply/ ...&quot; 200 11875
+210.212.209.67 - - [10/Jul/2012:00:18:51 -0500] &quot;GET /favicon.ico ...&quot; 404 369
+61.135.216.105 - - [10/Jul/2012:00:20:04 -0500] &quot;GET /blog/atom.xml ...&quot; 304 -
+...
+</code></pre>
+<p>为了处理这些文件，定义一个由多个执行特定任务独立任务的简单生成器函数组成的容器。</p>
+<pre><code class="language-python">import os
+import fnmatch
+import gzip
+import bz2
+import re
+
+def gen_find(filepat, top):
+    '''
+    Find all filenames in a directory tree that match a shell wildcard pattern
+    '''
+    for path, dirlist, filelist in os.walk(top):
+        for name in fnmatch.filter(filelist, filepat):
+            yield os.path.join(path,name)
+
+def gen_opener(filenames):
+    '''
+    Open a sequence of filenames one at a time producing a file object.
+    The file is closed immediately when proceeding to the next iteration.
+    '''
+    for filename in filenames:
+        if filename.endswith('.gz'):
+            f = gzip.open(filename, 'rt')
+        elif filename.endswith('.bz2'):
+            f = bz2.open(filename, 'rt')
+        else:
+            f = open(filename, 'rt')
+        yield f
+        f.close()
+
+def gen_concatenate(iterators):
+    '''
+    Chain a sequence of iterators together into a single sequence.
+    '''
+    for it in iterators:
+        yield from it
+
+def gen_grep(pattern, lines):
+    '''
+    Look for a regex pattern in a sequence of lines
+    '''
+    pat = re.compile(pattern)
+    for line in lines:
+        if pat.search(line):
+            yield line
+</code></pre>
+<p>可以很容易的将这些函数连起来创建一个处理管道。 比如，为了查找包含单词python的所有日志行。</p>
+<pre><code class="language-python">lognames = gen_find('access-log*', 'www')
+files = gen_opener(lognames)
+lines = gen_concatenate(files)
+pylines = gen_grep('(?i)python', lines)
+for line in pylines:
+    print(line)
+</code></pre>
+<p>甚至可以在生成器表达式中包装数据。 比如，下面这个版本计算出传输的字节数并计算其总和。</p>
+<pre><code class="language-python">lognames = gen_find('access-log*', 'www')
+files = gen_opener(lognames)
+lines = gen_concatenate(files)
+pylines = gen_grep('(?i)python', lines)
+bytecolumn = (line.rsplit(None,1)[1] for line in pylines)
+bytes = (int(x) for x in bytecolumn if x != '-')
+print('Total', sum(bytes))
+</code></pre>
+<h4 id="_14">展开嵌套的序列</h4>
+<p>可以写一个包含 yield from 语句的递归生成器来轻松解决这个问题。比如：</p>
+<pre><code class="language-python">from collections import Iterable
+
+def flatten(items, ignore_types=(str, bytes)):
+    for x in items:
+        if isinstance(x, Iterable) and not isinstance(x, ignore_types):
+            yield from flatten(x)
+        else:
+            yield x
+
+items = [1, 2, [3, 4, [5, 6], 7], 8]
+# Produces 1 2 3 4 5 6 7 8
+for x in flatten(items):
+    print(x)
+</code></pre>
+<p>语句 <code>yield from</code> 在想在生成器中调用其他生成器作为子例程的时候非常有用。</p>
+<p>最后要注意的一点是， <code>yield from</code> 在涉及到基于协程和生成器的并发编程中扮演着更加重要的角色。 </p>
+<h4 id="while">迭代器代替while无限循环</h4>
+<p>一个常见的IO操作程序可能会想下面这样：</p>
+<pre><code class="language-python">CHUNKSIZE = 8192
+
+def reader(s):
+    while True:
+        data = s.recv(CHUNKSIZE)
+        if data == b'':
+            break
+        process_data(data)
+</code></pre>
+<p>这种代码通常可以使用 <code>iter()</code> 来代替，如下所示：</p>
+<pre><code class="language-python">def reader2(s):
+    for chunk in iter(lambda: s.recv(CHUNKSIZE), b''):
+        pass
+        # process_data(data)
+</code></pre>
+<p><code>iter</code> 函数一个鲜为人知的特性是它接受一个可选的 <code>callable</code> 对象和一个标记(结尾)值作为输入参数。 当以这种方式使用的时候，它会创建一个迭代器， 这个迭代器会不断调用 <code>callable</code> 对象直到返回值和标记值相等为止。</p>
+<p>这种特殊的方法对于一些特定的会被重复调用的函数很有效果，比如涉及到I/O调用的函数。 举例来讲，如果你想从套接字或文件中以数据块的方式读取数据，通常你得要不断重复的执行 <code>read()</code> 或 <code>recv()</code> ， 并在后面紧跟一个文件结尾测试来决定是否终止。这节中的方案使用一个简单的 <code>iter()</code> 调用就可以将两者结合起来了。 其中 <code>lambda</code> 函数参数是为了创建一个无参的 <code>callable</code> 对象，并为 <code>recv</code> 或 <code>read()</code> 方法提供了 <code>size</code> 参数。</p>
+<h3 id="_15">单例模式</h3>
+<h3 id="_16">工厂模式</h3>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01_python%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/" class="btn btn-neutral float-left" title="Python 数据操作"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../03_python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="btn btn-neutral float-right" title="Python 数据结构">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../01_python%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../03_python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
