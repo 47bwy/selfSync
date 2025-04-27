@@ -1,4 +1,4 @@
-site_name: 47byw 的学习之路
+site_name: 47bwy 的学习之路
 theme: readthedocs
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
@@ -19,13 +19,27 @@ nav:
     - Linux:
       - Linux 使用和维护: '02_linux/linux使用和维护.md'
     - Python:
-      - Python 编程: '03_python/python编程.md'
-      - 数据结构和算法: '03_python/数据结构和算法.md'
+      - Python 编程: '03_python/00_python编程.md'
+      - Python 数据操作: '03_python/01_python数据操作.md'
+      - Python 数据访问机制: '03_python/02_python数据访问机制.md'
+      - Python FP和OOP: '03_python/03_pythonFP和OOP.md'
+      - Python 网络编程: '03_python/04_python网络编程.md'
+      - Python 设计模式: '03_python/05_python设计模式.md'
+      - Python 数据结构: '03_python/06_python数据结构.md'
+      - python 算法: '03_python/07_python算法.md'
+      - 常用内置库: '03_python/08_常用内置库.md'
+      - 常用三方库: '03_python/09_常用三方库.md'
     - 数据库:
-      - mysql: '05_database/mysql必知必会.md'
-      - redis: '05_database/redis必知必会.md'
-      - mongodb: '05_database/mongodb必知必会.md'
-    - blog:
+      - MySQL: '05_database/mysql必知必会.md'
+      - Redis: '05_database/redis必知必会.md'
+      - MongoDB: '05_database/mongodb必知必会.md'
+    - App:
+      - Python 应用开发: '07_app/00_python应用开发.md'
+      - Web开发: '07_app/01_web开发.md'
+      - Flask: '07_app/02_flask.md'
+      - FastAPI: '07_app/03_fastapi.md'
+    - Blog:
       - 工作笔记: '08_blog/工作笔记.md'
     - Books:
+      - 《控糖革命》: '09_books/控糖革命.md'
       - 《编写可读代码的艺术》: '09_books/编写可读代码的艺术.md'

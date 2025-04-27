@@ -22,6 +22,6 @@ mkdocs gh-deploy    # 部署到自己的 github pages, 如果是 readthedocs 会
 
 ### 本网站的访问地址
 
-[https://47bwy.readthedocs.io/en/latest/](https://47bwy.readthedocs.io/en/latest/)
+[https://47bwy.readthedocs.io](https://47bwy.readthedocs.io)
 
-[https://47bwy.github.io/selfSync/](https://47bwy.github.io/selfSync/)
+[https://47bwy.github.io/selfSync](https://47bwy.github.io/selfSync)
