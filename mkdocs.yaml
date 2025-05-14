@@ -11,6 +11,7 @@ markdown_extensions:
 extra_css:
   - extra.css
 
+dev_addr: '127.0.0.1:8001'
 
 nav:
     - 简介: 'index.md'
