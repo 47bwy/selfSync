@@ -565,7 +565,7 @@ def my_dedupe(items):
 使用方法：
 ```python
 >>> a = [1, 5, 2, 1, 9, 1, 5, 10]
->>> list(dedupe(a))
+>>> list(my_dedupe(a))
 [1, 5, 2, 9, 10]
 >>>
 ```
@@ -582,9 +582,9 @@ def my_dedupe(items, key=None):
 使用方法：
 ```python
 >>> a = [ {'x':1, 'y':2}, {'x':1, 'y':3}, {'x':1, 'y':2}, {'x':2, 'y':4}]
->>> list(dedupe(a, key=lambda d: (d['x'],d['y'])))
+>>> list(my_dedupe(a, key=lambda d: (d['x'],d['y'])))
 [{'x': 1, 'y': 2}, {'x': 1, 'y': 3}, {'x': 2, 'y': 4}]
->>> list(dedupe(a, key=lambda d: d['x']))
+>>> list(my_dedupe(a, key=lambda d: d['x']))
 [{'x': 1, 'y': 2}, {'x': 2, 'y': 4}]
 >>>
 ```

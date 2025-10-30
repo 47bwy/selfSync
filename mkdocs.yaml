@@ -34,6 +34,10 @@ nav:
       - MySQL: '05_database/mysql必知必会.md'
       - Redis: '05_database/redis必知必会.md'
       - MongoDB: '05_database/mongodb必知必会.md'
+    - AI:
+      - 算法: '06_ai/00_算法.md'
+      - 计算机视觉: '06_ai/01_计算机视觉.md'
+      - 大模型与生成式AI: '06_ai/02_大模型与生成式AI.md'
     - App:
       - Python 应用开发: '07_app/00_python应用开发.md'
       - Web开发: '07_app/01_web开发.md'
@@ -44,3 +48,5 @@ nav:
     - Books:
       - 《控糖革命》: '09_books/控糖革命.md'
       - 《编写可读代码的艺术》: '09_books/编写可读代码的艺术.md'
+    - 杂问:
+      - 经济民粹主义和教育: '10_others/经济民粹主义和教育.md'

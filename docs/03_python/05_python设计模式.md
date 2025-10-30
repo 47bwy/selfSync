@@ -50,7 +50,60 @@ animal = animal_factory("dog")
 print("Dog says:", animal.speak())  # 汪汪
 ```
 
+### 抽象工厂模式 Abstract Factory
+
+```python
+from abc import ABC, abstractmethod
+
+# 抽象产品类
+class Animal(ABC):
+    @abstractmethod
+    def speak(self):
+        pass
+
+# 具体产品类
+class Dog(Animal):
+    def speak(self):
+        print("Woof")
+
+class Cat(Animal):
+    def speak(self):
+        print("Meow")
+
+# 抽象工厂类
+class AnimalFactory(ABC):
+    @abstractmethod
+    def create_animal(self) -> Animal:
+        pass
+
+# 具体工厂类
+class DogFactory(AnimalFactory):
+    def create_animal(self) -> Animal:
+        return Dog()
+
+class CatFactory(AnimalFactory):
+    def create_animal(self) -> Animal:
+        return Cat()
+
+# 使用工厂方法模式
+def get_animal(factory: AnimalFactory) -> Animal:
+    return factory.create_animal()
+
+dog_factory = DogFactory()
+cat_factory = CatFactory()
+
+dog = get_animal(dog_factory)
+cat = get_animal(cat_factory)
+
+dog.speak()  # 输出: Woof
+cat.speak()  # 输出: Meow
+
+```
+
+
+
 ### 策略模式 Strategy
+
 ```python
 class StrategyA:
     def execute(self):
