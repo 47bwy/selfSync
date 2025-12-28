@@ -1,0 +1,39 @@
+[project]
+name = "selfsync"
+version = "0.1.0"
+description = "SelfSync project - Personal knowledge base and utilities"
+readme = "README.md"
+requires-python = "==3.10.13"
+dependencies = [
+    "pycryptodome",
+    # MkDocs 文档系统
+    "mkdocs>=1.6.0",  # 文档生成工具
+    "mkdocs-get-deps>=0.2.0",  # MkDocs 插件
+    
+    # MkDocs 插件和扩展
+    "mdx-truly-sane-lists>=1.3",  # Markdown 列表扩展
+    "python-markdown-math>=0.9",  # 数学公式支持
+]
+
+[project.optional-dependencies]
+# 示例代码依赖（codes/ 目录下的示例代码需要）
+examples = [
+    "numpy>=2.0.0",  # codes/numpy/*.py
+    "matplotlib>=3.10.0",  # codes/numpy/*.py
+    "scapy>=2.6.0",  # codes/numpy/numpy_06.py
+    "PyQt5>=5.15.0",  # codes/python/list_tuple_pyqt5.py
+]
+
+# 开发依赖
+dev = [
+    "mkdocs>=1.6.0",
+    "mkdocs-get-deps>=0.2.0",
+    "mdx-truly-sane-lists>=1.3",
+    "python-markdown-math>=0.9",
+]
+
+
+[tool.uv.sources]
+# 如果需要使用国内镜像，取消下面的注释
+# pypi = { url = "https://pypi.tuna.tsinghua.edu.cn/simple", default = true }
+
